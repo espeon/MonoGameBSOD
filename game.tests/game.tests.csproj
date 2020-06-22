@@ -1,0 +1,28 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+
+     <PropertyGroup>
+         <!-- Set to "netcoreapp" plus the first 2 digits of your .NET Core SDK version. -->
+         <TargetFramework>netcoreapp3.1</TargetFramework>
+         <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+         <IsPackable>false</IsPackable>
+     </PropertyGroup>
+
+     <ItemGroup>
+         <PackageReference Include="nunit" Version="*" />
+         <PackageReference Include="NUnit3TestAdapter" Version="*" />
+         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
+     </ItemGroup>
+
+     <ItemGroup>
+         <ProjectReference Include="..\game\game.csproj" />
+     </ItemGroup>
+
+     <!-- Actually cleans your project when you run "dotnet clean" -->
+     <Target Name="SpicNSpan"  AfterTargets="Clean">
+         <!-- Remove obj folder -->
+         <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+         <!-- Remove bin folder -->
+         <RemoveDir Directories="$(BaseOutputPath)" />
+     </Target>
+
+ </Project>
